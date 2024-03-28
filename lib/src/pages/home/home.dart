@@ -26,7 +26,7 @@ class _HomepageState extends State<Homepage> {
 
   void updateList(String value) {
     if (_debounce?.isActive ?? false) _debounce?.cancel();
-    _debounce = Timer(const Duration(milliseconds: 500), () {
+    _debounce = Timer(const Duration(seconds: 1), () {
       setState(() {
         display_list = _mockUp
             .where((element) =>
@@ -72,72 +72,106 @@ class _HomepageState extends State<Homepage> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: display_list.length,
-              itemBuilder: (context, index) {
-                final wifi = _mockUp[index];
-                return GestureDetector(
-                  onTap: () {
-                    showModalBottomSheet(
-                        isScrollControlled: true,
-                        context: context,
-                        builder: (ctx) => Sheet(
-                              mockUp: wifi,
-                            ));
-                  },
-                  child: Column(
-                    children: [
-                      Padding(
+            child: CustomScrollView(
+              slivers: [
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      final wifi = _mockUp[index];
+                      return GestureDetector(
+                        onTap: () {
+                          showModalBottomSheet(
+                              isScrollControlled: true,
+                              context: context,
+                              builder: (ctx) => Sheet(
+                                    mockUp: wifi,
+                                  ));
+                        },
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 30),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(35)),
+                                  color: Color(0xff254479),
+                                ),
+                                width: 400,
+                                height: 100,
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 30, horizontal: 40),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Text(
+                                          display_list[index].name,
+                                          style: const TextStyle(
+                                            color: Color(0xffFFFFFF),
+                                          ),
+                                        ),
+                                        Text(
+                                          display_list[index].network,
+                                          style: const TextStyle(
+                                            color: Color(0xff678BCA),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 90, vertical: 20)),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(display_list[index].lock
+                                            ? Icons.lock
+                                            : Icons.lock_open),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                    childCount: display_list.length,
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 30),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(35)),
+                          color: Color(0xff254479),
+                        ),
+                        width: 400,
+                        height: 100,
                         padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 30),
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(35)),
-                            color: Color(0xff254479),
-                          ),
-                          width: 400,
-                          height: 100,
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 30, horizontal: 40),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                children: [
-                                  Text(
-                                    display_list[index].name,
-                                    style: const TextStyle(
-                                      color: Color(0xffFFFFFF),
-                                    ),
-                                  ),
-                                  Text(
-                                    display_list[index].network,
-                                    style: const TextStyle(
-                                      color: Color(0xff678BCA),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 90, vertical: 20)),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(display_list[index].lock
-                                      ? Icons.lock
-                                      : Icons.lock_open),
-                                ],
-                              ),
-                            ],
+                            vertical: 30, horizontal: 40),
+                        child: const Center(
+                          child: Icon(
+                            Icons.add,
+                            size: 30,
                           ),
                         ),
                       ),
-                    ],
+                    ),
                   ),
-                );
-              },
+                ),
+              ],
             ),
           ),
         ],
