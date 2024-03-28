@@ -101,7 +101,7 @@ class _HomepageState extends State<Homepage> {
                                 width: 400,
                                 height: 100,
                                 padding: const EdgeInsets.symmetric(
-                                    vertical: 30, horizontal: 40),
+                                    vertical: 30, horizontal: 35),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment:
@@ -115,11 +115,22 @@ class _HomepageState extends State<Homepage> {
                                             color: Color(0xffFFFFFF),
                                           ),
                                         ),
-                                        Text(
-                                          display_list[index].network,
-                                          style: const TextStyle(
-                                            color: Color(0xff678BCA),
-                                          ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              display_list[index].network,
+                                              style: const TextStyle(
+                                                color: Color(0xff678BCA),
+                                              ),
+                                            ),
+                                            const Padding(
+                                              padding: EdgeInsets.only(left: 5),
+                                              child: Icon(
+                                                Icons.bluetooth,
+                                                size: 15,
+                                              ),
+                                            )
+                                          ],
                                         ),
                                       ],
                                     ),
