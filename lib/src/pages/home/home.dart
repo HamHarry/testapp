@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:testapp/src/pages/data/data.dart';
 import 'package:testapp/src/pages/sheet/bottomsheet.dart';
 
@@ -101,7 +102,7 @@ class _HomepageState extends State<Homepage> {
                                 width: 400,
                                 height: 100,
                                 padding: const EdgeInsets.symmetric(
-                                    vertical: 30, horizontal: 35),
+                                    vertical: 25, horizontal: 35),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment:
@@ -128,23 +129,23 @@ class _HomepageState extends State<Homepage> {
                                               child: Icon(
                                                 Icons.bluetooth,
                                                 size: 15,
+                                                color: Color(0xffFFFFFF),
                                               ),
                                             )
                                           ],
                                         ),
                                       ],
                                     ),
-                                    const Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 90, vertical: 20)),
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Icon(display_list[index].lock
-                                            ? Icons.lock
-                                            : Icons.lock_open),
-                                      ],
+                                    CircularPercentIndicator(
+                                      radius: 30.0,
+                                      lineWidth: 5,
+                                      percent: 0.7,
+                                      center: const Text(
+                                        "70%",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15),
+                                      ),
                                     ),
                                   ],
                                 ),
