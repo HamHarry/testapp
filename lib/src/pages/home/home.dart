@@ -19,7 +19,7 @@ class _HomepageState extends State<Homepage> {
     DataModel("TTXPZ", "2.4 Ghz", false, 100),
     DataModel("GGEZ", "2.4 Ghz", true, 50),
     DataModel("BU", "2.4 Ghz", true, 20),
-    DataModel("BUMAIL", "5 Ghz", false, 90),
+    DataModel("BUMAIL", "5 Ghz", false, 30),
   ];
 
   List<DataModel> display_list = List.from(_mockUp);
@@ -112,6 +112,8 @@ class _HomepageState extends State<Homepage> {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 10),
                                       child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             display_list[index].name,
