@@ -14,12 +14,12 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   static final List<DataModel> _mockUp = [
-    DataModel("HamHarry", "2.4 Ghz", true),
-    DataModel("Neng", "5 Ghz", false),
-    DataModel("TTXPZ", "2.4 Ghz", false),
-    DataModel("GGEZ", "2.4 Ghz", true),
-    DataModel("BU", "2.4 Ghz", true),
-    DataModel("BUMAIL", "5 Ghz", false),
+    DataModel("HamHarry", "2.4 Ghz", true, 70),
+    DataModel("Neng", "5 Ghz", false, 30),
+    DataModel("TTXPZ", "2.4 Ghz", false, 100),
+    DataModel("GGEZ", "2.4 Ghz", true, 50),
+    DataModel("BU", "2.4 Ghz", true, 20),
+    DataModel("BUMAIL", "5 Ghz", false, 90),
   ];
 
   List<DataModel> display_list = List.from(_mockUp);
@@ -79,6 +79,7 @@ class _HomepageState extends State<Homepage> {
                   delegate: SliverChildBuilderDelegate(
                     (context, index) {
                       final wifi = _mockUp[index];
+                      double bat = display_list[index].number / 100;
                       return GestureDetector(
                         onTap: () {
                           showModalBottomSheet(
@@ -102,49 +103,54 @@ class _HomepageState extends State<Homepage> {
                                 width: 400,
                                 height: 100,
                                 padding: const EdgeInsets.symmetric(
-                                    vertical: 25, horizontal: 35),
+                                    vertical: 20, horizontal: 35),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Column(
-                                      children: [
-                                        Text(
-                                          display_list[index].name,
-                                          style: const TextStyle(
-                                            color: Color(0xffFFFFFF),
-                                          ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              display_list[index].network,
-                                              style: const TextStyle(
-                                                color: Color(0xff678BCA),
-                                              ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 10),
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            display_list[index].name,
+                                            style: const TextStyle(
+                                              color: Color(0xffFFFFFF),
                                             ),
-                                            const Padding(
-                                              padding: EdgeInsets.only(left: 5),
-                                              child: Icon(
-                                                Icons.bluetooth,
-                                                size: 15,
-                                                color: Color(0xffFFFFFF),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                display_list[index].network,
+                                                style: const TextStyle(
+                                                  color: Color(0xff678BCA),
+                                                ),
                                               ),
-                                            )
-                                          ],
-                                        ),
-                                      ],
+                                              const Padding(
+                                                padding:
+                                                    EdgeInsets.only(left: 5),
+                                                child: Icon(
+                                                  Icons.bluetooth,
+                                                  size: 15,
+                                                  color: Color(0xffFFFFFF),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                     CircularPercentIndicator(
                                       radius: 30.0,
                                       lineWidth: 5,
-                                      percent: 0.7,
-                                      center: const Text(
-                                        "70%",
-                                        style: TextStyle(
+                                      percent: bat,
+                                      center: Text(
+                                        "${display_list[index].number}%",
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 15),
+                                            fontSize: 15,
+                                            color: Color(0xfFFFFFFF)),
                                       ),
                                     ),
                                   ],
