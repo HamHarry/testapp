@@ -135,9 +135,9 @@ class _HomepageState extends State<Homepage> {
                                                 child: Icon(
                                                   Icons.bluetooth,
                                                   size: 15,
-                                                  color: Color(0xffFFFFFF),
                                                 ),
-                                              )
+                                                //display_list[index].lock ? Icon(Icons.bluetooth , size: 15,) : Icon(Icons.bluetooth, size: 15);
+                                              ),
                                             ],
                                           ),
                                         ],
@@ -154,6 +154,12 @@ class _HomepageState extends State<Homepage> {
                                             fontSize: 15,
                                             color: Color(0xfFFFFFFF)),
                                       ),
+                                      circularStrokeCap:
+                                          CircularStrokeCap.round,
+                                      progressColor: Color(0xff82E2F7),
+                                      backgroundColor: Color(0xffFFFFFF),
+                                      animation: true,
+                                      animationDuration: 1000,
                                     ),
                                   ],
                                 ),
