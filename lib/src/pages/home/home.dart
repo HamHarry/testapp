@@ -15,10 +15,10 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   static final List<DataModel> _mockUp = [
     DataModel("HamHarry", "2.4 Ghz", true, 70),
-    DataModel("Neng", "5 Ghz", false, 30),
-    DataModel("TTXPZ", "2.4 Ghz", false, 100),
-    DataModel("GGEZ", "2.4 Ghz", true, 50),
-    DataModel("BU", "2.4 Ghz", true, 20),
+    DataModel("Google", "5 Ghz", false, 30),
+    DataModel("Welcome", "2.4 Ghz", false, 100),
+    DataModel("HyperX", "2.4 Ghz", true, 50),
+    DataModel("Iphone", "2.4 Ghz", true, 20),
     DataModel("BUMAIL", "5 Ghz", false, 30),
   ];
 
@@ -132,14 +132,17 @@ class _HomepageState extends State<Homepage> {
                                               Padding(
                                                 padding: const EdgeInsets.only(
                                                     left: 5),
-                                                child: Icon(
-                                                  display_list[index].lock
-                                                      ? Icons.bluetooth
-                                                      : Icons.bluetooth,
-                                                  size: 15,
-                                                  color:
-                                                      const Color(0xffFFFFFF),
-                                                ),
+                                                child: display_list[index].lock
+                                                    ? const Icon(
+                                                        Icons.bluetooth,
+                                                        size: 15,
+                                                        color:
+                                                            Color(0xffFFFFFF))
+                                                    : const Icon(
+                                                        Icons.bluetooth,
+                                                        size: 15,
+                                                        color:
+                                                            Color(0xff678BCA)),
                                               ),
                                             ],
                                           ),
