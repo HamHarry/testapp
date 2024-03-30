@@ -129,14 +129,17 @@ class _HomepageState extends State<Homepage> {
                                                   color: Color(0xff678BCA),
                                                 ),
                                               ),
-                                              const Padding(
-                                                padding:
-                                                    EdgeInsets.only(left: 5),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 5),
                                                 child: Icon(
-                                                  Icons.bluetooth,
+                                                  display_list[index].lock
+                                                      ? Icons.bluetooth
+                                                      : Icons.bluetooth,
                                                   size: 15,
+                                                  color:
+                                                      const Color(0xffFFFFFF),
                                                 ),
-                                                //display_list[index].lock ? Icon(Icons.bluetooth , size: 15,) : Icon(Icons.bluetooth, size: 15);
                                               ),
                                             ],
                                           ),
@@ -156,8 +159,8 @@ class _HomepageState extends State<Homepage> {
                                       ),
                                       circularStrokeCap:
                                           CircularStrokeCap.round,
-                                      progressColor: Color(0xff82E2F7),
-                                      backgroundColor: Color(0xffFFFFFF),
+                                      progressColor: const Color(0xff82E2F7),
+                                      backgroundColor: const Color(0xffFFFFFF),
                                       animation: true,
                                       animationDuration: 1000,
                                     ),
