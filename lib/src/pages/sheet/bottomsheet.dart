@@ -13,7 +13,7 @@ class _SheetState extends State<Sheet> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.75,
+      height: MediaQuery.of(context).size.height * 0.65,
       decoration: const BoxDecoration(
         color: Color(0xff254479),
         borderRadius: BorderRadius.only(
