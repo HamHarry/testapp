@@ -47,6 +47,7 @@ class _HomepageState extends State<Homepage> {
             padding:
                 const EdgeInsets.only(left: 30, right: 30, top: 40, bottom: 20),
             child: TextField(
+              autofocus: false,
               onChanged: (value) => updateList(value),
               style: const TextStyle(
                 color: Color(0xffFFFFFF),

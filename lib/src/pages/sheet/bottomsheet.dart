@@ -150,11 +150,23 @@ class _SheetState extends State<Sheet> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 15, right: 15),
                       child: DropdownButton<String>(
-                        hint: const Text("Select Mode"),
+                        hint: const Text(
+                          "Select Mode",
+                          style: TextStyle(
+                            color: Color(0xff87A2D3),
+                          ),
+                        ),
                         value: selectedValue,
                         items: dropdownItem.map((String value) {
                           return DropdownMenuItem<String>(
-                              value: value, child: Text(value));
+                            value: value,
+                            child: Text(
+                              value,
+                              style: const TextStyle(
+                                color: Color(0xff87A2D3),
+                              ),
+                            ),
+                          );
                         }).toList(),
                         onChanged: (newValue) {
                           setState(() {
