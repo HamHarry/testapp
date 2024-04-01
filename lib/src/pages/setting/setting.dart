@@ -14,8 +14,8 @@ class _SettingpageState extends State<Settingpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff101F3D),
-      body: Container(
+      backgroundColor: const Color(0xff101F3D),
+      body: SizedBox(
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -43,14 +43,14 @@ class _SettingpageState extends State<Settingpage> {
                       });
                     },
                     isExpanded: true,
-                    dropdownColor: Color(0xff3E5888),
+                    dropdownColor: const Color(0xff3E5888),
                     borderRadius: BorderRadius.circular(20),
                     icon: const Icon(
                       Icons.keyboard_arrow_down,
                       color: Color(0xff87A2D3),
                     ),
                     iconSize: 20,
-                    underline: Container(),
+                    underline: const SizedBox(),
                   ),
                 ),
               ),
